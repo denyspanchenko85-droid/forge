@@ -10,16 +10,22 @@
 │           │       └── shadow
 │           │           └── forge
 │           │               ├── ArtifactDrawer.kt
+│           │               ├── FileForge.kt
+│           │               ├── GalleryActivity.kt
 │           │               ├── HexEncoder.kt
 │           │               ├── InputActivity.kt
 │           │               ├── Logger.kt
 │           │               ├── MainActivity.kt
 │           │               └── PreviewActivity.kt
 │           └── res
+│               ├── drawable
+│               │   └── karta.png
 │               ├── layout
+│               │   ├── activity_gallery.xml
 │               │   ├── activity_input.xml
 │               │   ├── activity_main.xml
-│               │   └── activity_preview.xml
+│               │   ├── activity_preview.xml
+│               │   └── item_artifact.xml
 │               └── values
 ├── build.gradle.kts
 ├── gradle
@@ -28,4 +34,4 @@
 ├── gradle.properties
 └── settings.gradle.kts
 
-13 directories, 16 files
+14 directories, 21 files
