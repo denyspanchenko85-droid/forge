@@ -1,4 +1,4 @@
-// Responsibility: Handling main navigation hub logic and global error interception.
+// Responsibility: Main navigation hub and global crash logging.
 package com.shadow.forge
 
 import android.content.Intent
@@ -8,28 +8,27 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // Responsibility: Binding navigation buttons to their respective activities.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
         setupGlobalExceptionHandler()
 
+        // Кнопка переходу до створення
         findViewById<Button>(R.id.btnGoToInput).setOnClickListener {
             startActivity(Intent(this, InputActivity::class.java))
         }
 
+        // Кнопка переходу до галереї (Та сама лінія 23, де була помилка)
         findViewById<Button>(R.id.btnGoToGallery).setOnClickListener {
             startActivity(Intent(this, GalleryActivity::class.java))
         }
     }
 
-    // Responsibility: Catching all unhandled exceptions for forge_logs.txt.
     private fun setupGlobalExceptionHandler() {
-        val originalHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             ShadowLogger.logError(this, "FATAL: ${throwable.message}")
-            originalHandler?.uncaughtException(thread, throwable)
+            System.exit(1)
         }
     }
 }
